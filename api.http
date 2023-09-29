@@ -1,0 +1,36 @@
+### Recuperar todas las peliculas
+GET http://localhost:1234/movies
+
+### Recuperar una pelicula por ID
+GET http://localhost:1234/movies/2e6900e2-0b48-4fb6-ad48-09c7086e54fe
+
+### Recuperar todas las peliculas por un genero
+GET  http://localhost:1234/movies?genre=ACTION
+
+### Crear una pelicula
+POST  http://localhost:1234/movies
+Content-Type: application/json
+
+{
+    "title" : "Un cuento chino",
+    "year" : 2011,
+    "director" : "Sebastián Borensztein",
+    "duration" : 105,
+    "poster" : "https://pics.filmaffinity.com/Un_cuento_chino-184802699-large.jpg",
+    "genre": [
+        "Drama"
+        
+    ]
+}
+
+### Borrar una pelicula
+DELETE http://localhost:1234/movies/8fb17ae1-bdfe-45e5-a871-4772d7e526b8
+
+### Actualizar una pelicula
+PATCH  http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+    
+    "year" : 1995
+}
