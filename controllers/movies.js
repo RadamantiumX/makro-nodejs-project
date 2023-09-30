@@ -1,6 +1,6 @@
 import { MovieModel } from '../models/local-file-system/movie.js' // Modelo
 import { validateMovie, validatePartialMovie } from '../schemas/movies.js' // Validaciones
-
+// import { MovieModel } from '../models/mongodb/movie.js'
 // En el controlador decidimos que es lo vamos a RENDERIZAR
 
 export class MovieController {
