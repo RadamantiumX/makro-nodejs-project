@@ -1,23 +1,32 @@
 import { Router } from 'express'
 import { MovieController } from '../controllers/movies.js'
 
+export const createMovieRouter = ({ movieModel }) => {
 // Inicializamos y exportamos ROUTER
-export const movieRouter = Router()
+  const movieRouter = Router()
 
-// Utilizamos la ASINCRONIA para los MODELOS: No esperamos como se pueden manejar los datos
-// Llamamos al controlador para realizar las operaciones
+  // Creamos una nueva instancia del CONTROLADOR
+  const movieController = new MovieController({ movieModel })
 
-// Ruta: Obtener todas las peliculas
-movieRouter.get('/', MovieController.getAll)
+  // Utilizamos la ASINCRONIA para los MODELOS: No esperamos como se pueden manejar los datos
+  // Llamamos al controlador para realizar las operaciones
 
-// Para crear una pelicula
-movieRouter.post('/', MovieController.createMovie)
+  // Utilizamos la nueva instancia
 
-// Para obtener una pelicula por el ID
-movieRouter.get('/:id', MovieController.getById)
+  // Ruta: Obtener todas las peliculas
+  movieRouter.get('/', movieController.getAll)
 
-// Para borrar una pelicula por el ID
-movieRouter.delete('/:id', MovieController.deleteMovie)
+  // Para crear una pelicula
+  movieRouter.post('/', movieController.createMovie)
 
-// Para modificar parte de una pelicula
-movieRouter.patch('/:id', MovieController.updateMovie)
+  // Para obtener una pelicula por el ID
+  movieRouter.get('/:id', movieController.getById)
+
+  // Para borrar una pelicula por el ID
+  movieRouter.delete('/:id', movieController.deletedMovie)
+
+  // Para modificar parte de una pelicula
+  movieRouter.patch('/:id', movieController.updatedMovie)
+
+  return movieRouter
+}
